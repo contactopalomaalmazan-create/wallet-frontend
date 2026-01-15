@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Wallet - Menú Principal</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <style>
+    body {
+      padding: 20px;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    .btn {
+      margin-bottom: 10px;
+      display: none;
+    }
+    #saldo {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Mi Billetera 💳</h2>
+
+    <p>Saldo disponible:</p>
+    <h1 id="saldo">$0</h1>
+
+    <hr>
+
+    <a href="deposit.html" class="btn btn-success btn-block menu-btn">
+      Depositar
+    </a>
+
+    <a href="sendmoney.html" class="btn btn-danger btn-block menu-btn">
+      Enviar Dinero
+    </a>
+
+    <a href="transactions.html" class="btn btn-info btn-block menu-btn">
+      Últimos Movimientos
+    </a>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+
+      let saldo = localStorage.getItem("saldo") || 0;
+      $("#saldo").text("$" + saldo).fadeIn(800);
+
+      $(".menu-btn").each(function (index) {
+        $(this).delay(300 * index).fadeIn(600);
+      });
+
+      $(".menu-btn").hover(
+        function () {
+          $(this).animate({ opacity: 0.8 }, 200);
+        },
+        function () {
+          $(this).animate({ opacity: 1 }, 200);
+        }
+      );
+
+    });
+  </script>
+</body>
+</html>
